@@ -2,7 +2,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 from .models import CustomUser
-from .serializers import UserRegisterSerializer, UserLoginSerializer
+from .serializers import UserRegisterSerializer, UserLoginSerializer, MydataSerializer
 
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
@@ -21,3 +21,12 @@ class LoginView(generics.GenericAPIView):
             "access": str(refresh.access_token),
             "refresh": str(refresh)
         })
+
+
+
+class MydataView(generics.ListAPIView):
+
+    serializer_class = MydataSerializer
+
+    queryset = CustomUser.objects.all()
+    serializer_class = MydataSerializer

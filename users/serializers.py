@@ -11,13 +11,13 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         fields = ('cpf', 'first_name', 'last_name', 'email', 'password','telefone',
                   'endereco_estado', 'endereco_cidade', 'endereco_cep')
 
-    def validate_password(self, value):
-                                                #tentando usar a valida~ção de senha, arrumat
-        try:
-            password_validation.validate_password(value, self.instance)
-        except exceptions.ValidationError as e:
-            raise serializers.ValidationError(list(e.messages))
-        return value
+        def validate_password(self, value):
+                                                    #tentando usar a valida~ção de senha, arrumat
+            try:
+                password_validation.validate_password(value, self.instance)
+            except exceptions.ValidationError as e:
+                raise serializers.ValidationError(list(e.messages))
+            return value
 
 
     def create(self, validated_data):
@@ -44,3 +44,8 @@ class UserLoginSerializer(serializers.Serializer):
         if not user.is_active:
             raise serializers.ValidationError('Conta desativada')
         return {'user': user}
+
+class MydataSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CustomUser
+        fields = ('cpf', 'first_name', 'last_name', 'email','telefone', 'endereco_estado', 'endereco_cidade', 'endereco_cep')
