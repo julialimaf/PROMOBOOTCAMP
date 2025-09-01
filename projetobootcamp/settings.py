@@ -24,10 +24,18 @@ INSTALLED_APPS = [
     
     'rest_framework',
     'rest_framework_simplejwt',
+
+    'cupom_fiscal',
+
+    'info',
 ]
 
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 REST_FRAMEWORK = {
