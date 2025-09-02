@@ -12,7 +12,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
                   'endereco_estado', 'endereco_cidade', 'endereco_cep')
 
         def validate_password(self, value):
-                                                    #tentando usar a valida~ção de senha, arrumat
+                                                    
             try:
                 password_validation.validate_password(value, self.instance)
             except exceptions.ValidationError as e:
@@ -46,6 +46,8 @@ class UserLoginSerializer(serializers.Serializer):
         return {'user': user}
 
 class MydataSerializer(serializers.ModelSerializer):
+  
+  
     class Meta:
         model = CustomUser
         fields = ('cpf', 'first_name', 'last_name', 'email','telefone', 'endereco_estado', 'endereco_cidade', 'endereco_cep')

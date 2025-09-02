@@ -6,7 +6,7 @@ from users.models import CustomUser
 
 class CupomFiscal(models.Model):
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cupons')
-    imagem = models.ImageField(upload_to='cupons/')  # Pasta para armazenar imagens
+    imagem = models.ImageField(upload_to='cupons/')  
     titulo_produto = models.CharField(max_length=255)
     quantidade = models.PositiveIntegerField()
     data_cadastro = models.DateTimeField(auto_now_add=True)
