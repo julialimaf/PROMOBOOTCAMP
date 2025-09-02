@@ -12,7 +12,8 @@ class CustomUser(AbstractUser):
     endereco_estado = models.CharField("Estado", max_length=50)
     endereco_cidade = models.CharField("Cidade", max_length=50)
     endereco_cep = models.CharField("CEP", max_length=10)
-
+    password = models.CharField("Senha", max_length=128)    
+    
     USERNAME_FIELD = 'cpf'
     REQUIRED_FIELDS = ['first_name', 'last_name', 'email']
 

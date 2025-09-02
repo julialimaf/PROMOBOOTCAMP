@@ -9,6 +9,6 @@ urlpatterns = [
     path('', include('users.urls')),  
     path('api/cupom/', include('cupom_fiscal.urls')),  
     path('api/info/', include('info.urls')),  
-]
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
