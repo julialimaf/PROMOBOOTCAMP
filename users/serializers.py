@@ -2,6 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth import authenticate, password_validation
 from django.core import exceptions
 from .models import CustomUser
+from users.services import send_email
+
 
 class UserRegisterSerializer(serializers.ModelSerializer):
     password = serializers.CharField(write_only=True)
@@ -23,7 +25,18 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         password = validated_data.pop('password')
         cpf = validated_data.get('cpf')
-  
+
+
+        send_email(
+            subjects='Bem-vindo a Promoção Bootcamp! ',    
+            from_email= 'promobootcamp@catskillet.com',
+            to_email=[validated_data.get('email')],
+            template='welcome.html',
+            context={'first_name': validated_data.get('first_name')},
+
+        )
+
+
         user = CustomUser(**validated_data)
         user.username = cpf  
         user.set_password(password)
@@ -33,7 +46,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
 class UserLoginSerializer(serializers.Serializer):
     cpf = serializers.CharField()
-    password = serializers.CharField(write_only=True)
+    password = serializers.CharField(write_only=True) ######apenas para escrever, não sera visto (aula 25-08)
 
     def validate(self, attrs):
         cpf = attrs.get('cpf')
@@ -46,8 +59,6 @@ class UserLoginSerializer(serializers.Serializer):
         return {'user': user}
 
 class MydataSerializer(serializers.ModelSerializer):
-  
-  
     class Meta:
         model = CustomUser
         fields = ('cpf', 'first_name', 'last_name', 'email','telefone', 'endereco_estado', 'endereco_cidade', 'endereco_cep')

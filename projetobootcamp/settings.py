@@ -28,6 +28,9 @@ INSTALLED_APPS = [
     'cupom_fiscal',
 
     'info',
+
+
+    'num_sorte',
 ]
 
 REST_FRAMEWORK = {
@@ -116,3 +119,13 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+
+#COLOCAR NO
+EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+EMAIL_HOST_USER = 'd8e4846f2da9bc'
+EMAIL_HOST_PASSWORD = 'd65efe1f97841a'
+EMAIL_PORT = '2525'
