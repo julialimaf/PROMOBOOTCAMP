@@ -30,8 +30,17 @@ INSTALLED_APPS = [
     'info',
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
 
 AUTH_USER_MODEL = 'users.CustomUser'
+
+APPEND_SLASH = False
 
 
 MEDIA_URL = '/media/'
