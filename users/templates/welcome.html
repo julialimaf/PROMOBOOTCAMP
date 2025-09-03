@@ -1,13 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Bem-Vindo</title>
+    <style>
+        body {
+            background-color: #ffe6f0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+            color: #d1495b;
+        }
+
+        .container {
+            background-color: #fff0f5;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #f8c8dc;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        h1 {
+            color: #ff69b4;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            color: #e91e63;
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #d1495b;
+            margin-top: 0;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bem-Vindo {{email}}</h1>
-    <p>Obrigado por se registrar em nosso sistema!</p>
-    <h2> Cadastre o seu cupom para gerar um número da sorte e concorrer a prêmios incríveis!</h2>
+    <div class="container">
+        <h1>Bem-Vindo {{email}}</h1>
+        <p>Obrigado por se registrar em nosso sistema!</p>
+        <h2>Cadastre o seu cupom para gerar um número da sorte e concorrer a prêmios incríveis!</h2>
+    </div>
 </body>
 </html>

@@ -31,3 +31,24 @@ class MyDataView(APIView):
     def get(self, request):
         serializer = UserRegisterSerializer(request.user)
         return Response(serializer.data)
+    
+
+
+from django.shortcuts import render
+
+def pagina_welcome(request):
+   
+    if request.users.is_authenticated:
+        
+        email = request.users.email
+    else:
+        
+        email = "Visitante"
+
+    
+    contexto = {
+        'email': email,
+    }
+
+#POR QUE ISSO NÃO FUNCIONA AQUI?    
+    return render(request, 'welcome.html', contexto)

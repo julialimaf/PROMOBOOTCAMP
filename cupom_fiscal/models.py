@@ -5,8 +5,9 @@ from django.db import models
 from users.models import CustomUser  
 
 class CupomFiscal(models.Model):
+    cnpj = models.CharField(max_length=18, default='00.000.000/0000-00')
     usuario = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cupons')
-    
+    imagem = models.ImageField(upload_to='midias/', default='default.jpg')
     titulo_produto = models.CharField(max_length=255)
     quantidade = models.PositiveIntegerField()
     data_cadastro = models.DateTimeField(auto_now_add=True)
