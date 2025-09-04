@@ -15,3 +15,9 @@ class CupomFiscal(models.Model):
 
     def __str__(self):
         return f"{self.titulo_produto} - {self.usuario.username}"
+    
+
+
+class ItemProduct(models.Model):
+    id_item = models.AutoField(Primary_key= True)
+    
