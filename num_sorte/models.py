@@ -20,5 +20,5 @@ class NumeroSorte(models.Model):
     cupom_fiscal = models.ForeignKey('cupom_fiscal.CupomFiscal', on_delete=models.CASCADE, related_name='numeros_sorte')
     criado_em = models.DateTimeField("Criado em", default=timezone.now)
 
-    def __str__(self):
-        return f"Número: {self.numero} - Usuário: {self.usuario.cpf} - Cupom: {self.cupom_fiscal.id_cupom}"
+def __str__(self):
+    return f"Número: {self.numero} - Usuário: {self.usuario.cpf} - Cupom: {self.cupom_fiscal.id}"
