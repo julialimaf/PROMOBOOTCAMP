@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import CupomFiscalCreateView
+from .views import FiscalCouponCreateView
 
 urlpatterns = [
-    path('criar/', CupomFiscalCreateView.as_view(), name='criar_cupom'),
+    path('create/', FiscalCouponCreateView.as_view(), name='create_coupon'),
 ]

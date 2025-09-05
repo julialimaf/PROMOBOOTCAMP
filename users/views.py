@@ -36,19 +36,19 @@ class MyDataView(APIView):
 
 from django.shortcuts import render
 
-def pagina_welcome(request):
+def welcome_page(request):
    
-    if request.users.is_authenticated:
+    if request.user.is_authenticated:
         
-        email = request.users.email
+        email = request.user.email
     else:
         
-        email = "Visitante"
+        email = "Visitor"
 
     
-    contexto = {
+    context = {
         'email': email,
     }
 
-#POR QUE ISSO NÃO FUNCIONA AQUI?    
-    return render(request, 'welcome.html', contexto)
+   
+    return render(request, 'welcome.html', context)

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Faq, Regulamento, PoliticaPrivacidade
+from .models import Faq, Regulations, PrivacyPolicy
 
 class FaqSerializers(serializers.ModelSerializer):
     class Meta:
@@ -7,13 +7,13 @@ class FaqSerializers(serializers.ModelSerializer):
         fields = ['id', 'pergunta', 'resposta']
 
 
-class RegulamentoSerializers(serializers.ModelSerializer):
+class RegulationsSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Regulamento
+        model = Regulations
         fields = ['id', 'conteudo']
 
 
-class PoliticaPrivacidadeSerializers(serializers.ModelSerializer):
+class PrivacyPolicySerializers(serializers.ModelSerializer):
     class Meta:
-        model = PoliticaPrivacidade
+        model = PrivacyPolicy
         fields = ['id', 'conteudo']

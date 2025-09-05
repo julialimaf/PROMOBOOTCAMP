@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import generics
-from .models import Faq, Regulamento, PoliticaPrivacidade
-from .serializers import FaqSerializers, RegulamentoSerializers, PoliticaPrivacidadeSerializers
+from .models import Faq, Regulations, PrivacyPolicy
+from .serializers import FaqSerializers, RegulationsSerializers, PrivacyPolicySerializers
 
 
 class FaqListView(generics.ListAPIView):
@@ -9,16 +9,16 @@ class FaqListView(generics.ListAPIView):
     serializer_class = FaqSerializers
 
 
-class RegulamentoView(generics.RetrieveAPIView):
-    queryset = Regulamento.objects.all()
-    serializer_class = RegulamentoSerializers
+class RegulationsView(generics.RetrieveAPIView):
+    queryset = Regulations.objects.all()
+    serializer_class = RegulationsSerializers
 
     def get_object(self):
-        return Regulamento.objects.last()
+        return Regulations.objects.last()
 
-class PoliticaPrivacidadeView(generics.RetrieveAPIView):
-    queryset = PoliticaPrivacidade.objects.all()
-    serializer_class = PoliticaPrivacidadeSerializers
+class PrivacyPolicyView(generics.RetrieveAPIView):
+    queryset = PrivacyPolicy.objects.all()
+    serializer_class = PrivacyPolicySerializers
 
     def get_object(self):
-        return PoliticaPrivacidade.objects.last()
+        return PrivacyPolicy.objects.last()

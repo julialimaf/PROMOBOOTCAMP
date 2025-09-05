@@ -1,20 +1,20 @@
 from rest_framework import generics, permissions
-from .models import CupomFiscal
-from .serializers import CupomFiscalSerializer
-from num_sorte.utils import generate_numeros_para_cupom 
-from num_sorte.models import NumeroSorte
-from cupom_fiscal.models import CupomFiscal 
+from .models import FiscalCoupon
+from .serializers import FiscalCouponSerializer
+from num_sorte.utils import generate_numbers_for_coupon
+from num_sorte.models import LuckyNumber
+from cupom_fiscal.models import FiscalCoupon
 
 
 
 
-class CupomFiscalCreateView(generics.CreateAPIView):
-    queryset = CupomFiscal.objects.all()
-    serializer_class = CupomFiscalSerializer
+class FiscalCouponCreateView(generics.CreateAPIView):
+    queryset = FiscalCoupon.objects.all()
+    serializer_class = FiscalCouponSerializer
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        cupom = serializer.save(usuario=self.request.user)
+        coupon = serializer.save(user=self.request.user)
       
-        quantidade = cupom.quantidade
-        generate_numeros_para_cupom(cupom, self.request.user, quantidade)
+        quantity = coupon.quantity 
+        generate_numbers_for_coupon(coupon, self.request.user,quantity)

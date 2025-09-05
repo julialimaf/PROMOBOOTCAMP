@@ -2,22 +2,24 @@ from django.db import models
 
 
 class Faq(models.Model):
-    pergunta = models.CharField(max_length=255)
-    resposta = models.TextField()
+    question = models.CharField(max_length=255)
+    answer = models.TextField()
+
 
     def __str__(self):
         return self.pergunta
 
 
-class Regulamento(models.Model):
-    conteudo = models.TextField()
+class Regulations(models.Model):
+    content = models.TextField()
+    file = models.ImageField(upload_to='Regulations/')
 
     def __str__(self):
-        return "Regulamento"
+        return "Regulations"
 
 
-class PoliticaPrivacidade(models.Model):
-    conteudo = models.TextField()
-
+class PrivacyPolicy(models.Model):
+    content = models.TextField()
+    file = models.ImageField(upload_to='PrivacyPolicy/')
     def __str__(self):
-        return "Política de Privacidade"
+        return "PrivacyPolicy"
