@@ -10,10 +10,10 @@ def _get_last_batch():
     return last.batch if last else 0
 
 def _next_batch(start_batch):
-    next_b = (start_batch % 99) + 1
+    next_b = (start_batch % 98) + 1
     return next_b
 
-def generate_numbers_for_coupon(coupon, user, quantity):
+def generate_numbers_for_coupon(coupon, user, quantity): #####POR QUE ESTA GERANDO DUPLICADO ?????????????????????????????????????????????
     generated = []
     start_batch = _get_last_batch()
 
@@ -22,7 +22,7 @@ def generate_numbers_for_coupon(coupon, user, quantity):
         attempt = 0
         while attempt < MAX_TRIES:
             series = random.randint(0, MAX_SERIES)  
-            number_int = f"{batch}{str(series).zfill(6)}"  
+            number_int = f"{batch}{str(series).zfill(5)}"  
             try:
                 with transaction.atomic():
                     number_obj = LuckyNumber.objects.create(
