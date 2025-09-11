@@ -3,7 +3,7 @@ services:
   app: 
     container_name: app
     build: .
-    command: python manage.py runserver 0.0.0.0:8000
+    command: bash -c "./prestart.sh"
     volumes:
         - .:/code
     ports:

@@ -15,7 +15,7 @@ class FiscalCouponCreateView(generics.CreateAPIView):
     permission_classes = [permissions.IsAuthenticated]
 
     def perform_create(self, serializer):
-        coupon = serializer.save(user_fk=self.request.user)
+        coupon = serializer.save()
       
         quantity = sum(p.quantity for p in coupon.pivo_set.all())
         generate_numbers_for_coupon(coupon, self.request.user,quantity)
