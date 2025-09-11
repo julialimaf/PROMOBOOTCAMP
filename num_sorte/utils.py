@@ -1,7 +1,8 @@
 import random
 from django.db import IntegrityError, transaction
 from .models import LuckyNumber, LuckyNumberControl
-
+from users.models import CustomUser 
+generated = []
 MAX_SERIES = 99999
 MAX_TRIES = 1000  
 
@@ -13,8 +14,7 @@ def _next_batch(start_batch):
     next_b = (start_batch % 98) + 1
     return next_b
 
-def generate_numbers_for_coupon(coupon, user, quantity): #####POR QUE ESTA GERANDO DUPLICADO ?????????????????????????????????????????????
-    generated = []
+def generate_numbers_for_coupon(coupon, user, quantity):
     start_batch = _get_last_batch()
 
     for _ in range(int(quantity)):

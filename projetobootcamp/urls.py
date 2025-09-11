@@ -10,6 +10,7 @@ urlpatterns = [
     path('api/coupon/', include('cupom_fiscal.urls')),  
     path('api/info/', include('info.urls')),  
     path('api/adresses/', include('adresses.urls')),
+    path('api/', include('num_sorte.urls')),
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

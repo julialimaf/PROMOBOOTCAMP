@@ -18,9 +18,8 @@ class LuckyNumberOnlySerializer(serializers.ModelSerializer):
         model = LuckyNumber
         fields = ['formatted_number']
     def get_formatted_number(self, obj):
-        num_str = str(obj.number)
-        if len(num_str) <= 2:
-            return num_str        #### ate agora ta dando certo, mas to com medo de não retornar as casas desejadas, infelizmente ####
+        num_str = str(obj.number).zfill(7)
+       
         return f"{num_str[:2]}.{num_str[2:]}" 
 
 

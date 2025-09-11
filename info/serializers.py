@@ -4,16 +4,16 @@ from .models import Faq, Regulations, PrivacyPolicy
 class FaqSerializers(serializers.ModelSerializer):
     class Meta:
         model = Faq
-        fields = ['id', 'pergunta', 'resposta']
+        fields = ['id', 'question', 'answer']
 
 
 class RegulationsSerializers(serializers.ModelSerializer):
     class Meta:
         model = Regulations
-        fields = ['id', 'conteudo']
+        fields = ['id', 'content', 'file']
 
 
 class PrivacyPolicySerializers(serializers.ModelSerializer):
     class Meta:
         model = PrivacyPolicy
-        fields = ['id', 'conteudo']
+        fields = ['id', 'content', 'file']

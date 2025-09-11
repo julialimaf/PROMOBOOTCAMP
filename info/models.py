@@ -7,7 +7,7 @@ class Faq(models.Model):
 
 
     def __str__(self):
-        return self.pergunta
+        return self.question
 
 
 class Regulations(models.Model):
