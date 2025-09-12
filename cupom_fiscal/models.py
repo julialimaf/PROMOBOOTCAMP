@@ -10,7 +10,7 @@ class Product(models.Model):
 
 
 class FiscalCoupon(models.Model):
-    id = models.AutoField(primary_key=True)
+    
     cnpj = models.CharField(max_length=18, default='00.000.000/0000-00')
     user_fk = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='cupons')
     image = models.ImageField(upload_to='midias/', default='default.jpg')

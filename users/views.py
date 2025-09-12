@@ -5,6 +5,8 @@ from .models import CustomUser
 from .serializers import UserRegisterSerializer, UserLoginSerializer
 from rest_framework.views import APIView
 from rest_framework.permissions import IsAuthenticated
+from projetobootcamp.utils_cache import get_cache, set_cache, delete_cache
+from django.shortcuts import render
 
 class RegisterView(generics.CreateAPIView):
     queryset = CustomUser.objects.all()
@@ -27,14 +29,20 @@ class LoginView(generics.GenericAPIView):
 
 class MyDataView(APIView):
     permission_classes = [IsAuthenticated]
-
-    def get(self, request):
-        serializer = UserRegisterSerializer(request.user)
-        return Response(serializer.data)
     
+    def get(self, request):
+        cache_key = f"user_{request.user.id}_data"
+        data = get_cache(cache_key)
+
+        if data is None:
+            serializer = UserRegisterSerializer(request.user)
+            data = serializer.data
+            set_cache(cache_key, data, timeout=300)
+        return Response(data)
 
 
-from django.shortcuts import render
+
+
 
 def welcome_page(request):
    
