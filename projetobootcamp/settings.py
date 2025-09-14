@@ -6,7 +6,7 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = 'n)&%62af=_r++$0s749yflm=50ob4l4ht-k)p^r%6@)62d&vur'
 DEBUG = config('DEBUG', default=True, cast=bool)
 ALLOWED_HOSTS = []
 
@@ -95,9 +95,12 @@ TEMPLATES = [
 ]
 
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
+<<<<<<< HEAD
         'NAME': config('DB_NAME'),
         'USER': config('DB_USER'),
         'PASSWORD': config('DB_PASSWORD'),
@@ -106,6 +109,13 @@ DATABASES = {
         'OPTIONS': {
             'client_encoding': 'UTF8',
         }
+=======
+        'NAME': 'users',
+        'USER': 'postgres',
+        'PASSWORD': '1234',
+        'HOST': 'localhost',
+        'PORT': '5432',
+>>>>>>> 43286f0 (pegar so o cupom e o numero)
     }
 }
 
@@ -145,9 +155,3 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1)
 }
 
-
-EMAIL_HOST = config('EMAIL_HOST')
-EMAIL_HOST_USER = config('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = config('EMAIL_PORT', cast=int)
-EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)

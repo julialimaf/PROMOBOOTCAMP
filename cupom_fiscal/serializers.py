@@ -1,4 +1,5 @@
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import FiscalCoupon, Pivo, Product
 from num_sorte.models import LuckyNumber
 from num_sorte.serializers import LuckyNumberSerializer
@@ -59,3 +60,26 @@ class FiscalCouponSerializer(serializers.ModelSerializer):
     def get_products(self, obj):
         pivos = Pivo.objects.filter(coupon=obj)
         return [{"product_name": p.product.product_name, "quantity": p.quantity} for p in pivos]
+=======
+from .models import CupomFiscal
+from num_sorte.models import NumeroSorte
+
+class NumeroSorteSerializer(serializers.ModelSerializer):
+    lote_serie = serializers.ReadOnlyField()  # usa a propriedade do model
+
+    class Meta:
+        model = NumeroSorte
+        fields = ['numero', 'lote_serie']
+
+class CupomFiscalSerializer(serializers.ModelSerializer):
+    numeros_sorte = serializers.SerializerMethodField()  # adiciona o campo
+
+    class Meta:
+        model = CupomFiscal
+        fields = ['id', 'usuario', 'cnpj', 'imagem', 'titulo_produto', 'quantidade', 'data_cadastro', 'numeros_sorte']
+        read_only_fields = ['usuario', 'data_cadastro', 'numeros_sorte']
+
+    def get_numeros_sorte(self, obj):
+        numeros = NumeroSorte.objects.filter(cupom_fiscal=obj)  # usa o campo correto do model
+        return NumeroSorteSerializer(numeros, many=True).data
+>>>>>>> 43286f0 (pegar so o cupom e o numero)

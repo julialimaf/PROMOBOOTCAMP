@@ -33,6 +33,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         password = validated_data.pop('password')
         cpf = validated_data.get('cpf')
 
+<<<<<<< HEAD
         send_email(
             subject='Welcome to Promo Bootcamp!',
             from_email='promobootcamp@catskillet.com',
@@ -40,6 +41,10 @@ class UserRegisterSerializer(serializers.ModelSerializer):
             template='welcome.html',
             context={'first_name': validated_data.get('first_name')},
         )
+=======
+
+      
+>>>>>>> 43286f0 (pegar so o cupom e o numero)
 
         user = CustomUser(**validated_data)
         user.username = cpf
